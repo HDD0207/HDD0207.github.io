@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 350px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            background-color: rgba(44, 44, 250, 0.5);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px 0 #666;
+            animation: dh 1s;
+        }
+
+        /* .box:hover {
+            animation: dh 1s;
+        } */
+
+        @keyframes dh {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(0.98);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(0.99);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .box .inp,
+        .box .inp::-webkit-input-placeholder {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            background-color: transparent;
+            margin: 40px 0;
+            outline: none;
+            height: 20px;
+            transition: border 2s;
+            color: #ccc;
+        }
+
+        .box .inp:hover {
+            border-bottom: 2px solid purple;
+        }
+
+        .cBox {
+            width: 100%;
+            height: 20px;
+            position: relative;
+        }
+
+        .cBox span {
+            display: block;
+            float: left;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            transition: all 1s;
+        }
+
+        .cBox span.active::after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-left: 2px solid orange;
+            border-bottom: 2px solid orange;
+            transform: translateY(-5px) translateX(-5px) rotate(-60deg);
+        }
+
+        .cBox .checkbox {
+            position: absolute;
+            display: block;
+            opacity: 0;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cBox p {
+            padding: 0;
+            margin: 0;
+            line-height: 20px;
+            cursor: pointer;
+            transition: color 1s;
+        }
+
+        .cBox p:hover {
+            color: #ccc;
+        }
+
+        .cBox .pass1 {
+            margin-left: 5px;
+            float: left;
+        }
+
+        .cBox .pass2 {
+            float: right;
+        }
+
+        .box .btn {
+            outline: none;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            background-color: rebeccapurple;
+            margin: 30px 0;
+            color: #ccc;
+            transition: background 1s;
+        }
+
+        .box .btn:hover {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" placeholder="用户名" class="inp">
+        <input type="password" placeholder="密码" class="inp">
+        <div class="cBox">
+            <span></span>
+            <p class="pass1">记住密码</p>
+            <input type="checkbox" class="checkbox">
+            <p class="pass2">忘记密码?</p>
+        </div>
+        <input type="submit" value="登陆" class="btn">
+    </div>
+    <script>
+        $(".checkbox").click(function () {
+            if ($(this).is(":checked")) {
+                // console.log("选中");
+                $(".cBox span").addClass("active");
+            }
+            else {
+                // console.log("未选中");
+                $(".cBox span").removeClass("active");
+            }
+        })
+    </script>
+</body>
+
+</html>

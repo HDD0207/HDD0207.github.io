@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .box {
+            width: 600px;
+            margin: 200px auto;
+            font-size: 100px;
+            color: #000;
+        }
+
+        .box div {
+            cursor: pointer;
+            float: left;
+            margin: 20px;
+            transition: 1s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .box div::after {
+            z-index: 100;
+            display: block;
+            color: #fff;
+            position: absolute;
+            left: -1px;
+            top: 0;
+            transform-origin: left center;
+            transition: all 0.5s linear;
+        }
+
+        .box:hover div::after {
+            left: -2px;
+            top: 0;
+            transform: rotateY(30deg);
+        }
+
+        .box div:nth-child(1)::after {
+            content: "A";
+            display: block;
+            color: #fff;
+        }
+
+        .box div:nth-child(2)::after {
+            content: "B";
+            display: block;
+            color: #fff;
+        }
+
+        .box div:nth-child(3)::after {
+            content: "C";
+            display: block;
+            color: #fff;
+        }
+
+        .box div:nth-child(4)::after {
+            content: "D";
+            display: block;
+            color: #fff;
+        }
+
+        .box:hover div:nth-child(1)::after {
+            content: "A";
+            display: block;
+            color: #fff;
+        }
+
+        .box:hover div:nth-child(2)::after {
+            content: "B";
+            display: block;
+            color: #fff;
+        }
+
+        .box:hover div:nth-child(3)::after {
+            content: "C";
+            display: block;
+            color: #fff;
+        }
+
+        .box:hover div:nth-child(4)::after {
+            content: "D";
+            display: block;
+            color: #fff;
+        }
+
+        .box div::before {
+            display: block;
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            transform-origin: left center;
+            left: 0;
+            transition: all 0.5s linear;
+            color: #CCC;
+        }
+
+        .box:hover div::before {
+            transform: skew(0, 15deg)
+        }
+
+        .box div:nth-child(1)::before {
+            content: "A";
+        }
+
+        .box div:nth-child(2)::before {
+            content: "B";
+        }
+
+        .box div:nth-child(3)::before {
+            content: "C";
+        }
+
+        .box div:nth-child(4)::before {
+            content: "D";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>D</div>
+    </div>
+</body>
+
+</html>

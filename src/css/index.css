@@ -1,4 +1,122 @@
-.title{
+@media (min-width:1200px) {
+    html, body {
+        font-size: 26px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1119px) {
+    html, body {
+        font-size: 21px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    html, body {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #666;
+}
+
+body {
+    position: relative;
+}
+
+h5, ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.clrarfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+img {
+    display: block;
+}
+
+/* ↑ 默认样式 */
+
+.fixed-top {
+    background: lightsteelblue !important;
+}
+
+.content {
+    background-image: linear-gradient(to bottom, #fff, #fff, lightsteelblue);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    color: #fff;
+    box-shadow: inset 0 0 1rem #fff;
+    padding: .2rem;
+    border-radius: 1rem;
+    color: steelblue;
+}
+
+.navbar {
+    padding: .3rem;
+}
+
+.navbar-nav {
+    flex-direction: unset;
+    align-items: center;
+}
+
+.navbar-nav li {
+    margin-right: .3rem;
+}
+
+main {
+    overflow-y: auto;
+    margin-top: 4rem;
+    height: calc(100% - 4rem);
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+.box {
+    width: 90%;
+    height: 100%;
+    margin: .5rem auto 0;
+    padding: 0 .8rem;
+    box-sizing: border-box;
+    background-color: transparent !important;
+}
+
+.item {
     text-align: center;
-    font-size: 0.5rem;
+}
+
+.item .img-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: .5rem;
+}
+
+.item .tit {
+    font-size: .8rem;
 }

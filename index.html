@@ -16,18 +16,36 @@
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
     <link rel="stylesheet" href="./src/css/index.css">
+
 </head>
 
 <body>
     <div class="content">
         <nav>
             <ul class="list-nav">
-                <li class="list-item"><a href="#item1">HTML</a></li>
-                <li class="list-item"><a href="#item2">Css3</a></li>
-                <li class="list-item"><a href="#item3">Vue</a></li>
-                <li class="list-item"><a href="#item4">WeChat</a></li>
+                <a href="#item1">
+                    <li data-index="0" class="list-item">HTML</li>
+                </a>
+                <a href="#item2">
+                    <li data-index="1" class="list-item">Css3</li>
+                </a>
+                <a href="#item3">
+                    <li data-index="2" class="list-item">Vue</li>
+                </a>
+                <a href="#item4">
+                    <li data-index="3" class="list-item">WeChat</li>
+                </a>
             </ul>
-            <h5 class="title">HDD0207.github.io</h5>
+            <div class="title">
+                <span>HE</span>
+                <ol class="v-title-item">
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                </ol>
+            </div>
         </nav>
         <main>
             <div class="item" id="item1">
@@ -47,28 +65,10 @@
                     </div>
                     <h3 class="text">list1</h3>
                 </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
             </div>
             <div class="item" id="item3">
                 <span class="v-title">Vue</span>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
+                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist/index.html">
                     <div class="img-box">
                         <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
                     </div>
@@ -79,35 +79,18 @@
                 <span class="v-title">WeChat</span>
                 <a class="v-item col-md-4 col-sm-6 col-xs-12">
                     <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                        <span class="v-img-box"></span>
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                        <span class="v-img-box"></span>
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                        <span class="v-img-box"></span>
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                        <span class="v-img-box"></span>
+                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img v-img">
                     </div>
                     <h3 class="text">list1</h3>
                 </a>
             </div>
+            <span class="goTop">
+                <img class="top-icon auto-img" src="./src/images/top.png" alt="图片未加载...">
+            </span>
         </main>
     </div>
+
+    <script src="./src/js/index.js"></script>
 </body>
 
 </html>

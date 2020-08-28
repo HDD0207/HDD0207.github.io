@@ -14,7 +14,19 @@ $(() => {
         index = 0;
         $("main").animate({ scrollTop: 0 }, 500);
     })
-    
+    function init() {
+        let width = $(".v-title-item").width();
+        let deg = Math.PI / 180;
+        // console.log(deg * 30);
+        let top = Math.sin(deg * 45);
+        // console.log(top)
+        let left = Math.cos(deg * 45)
+
+        for (let i = 0; i < $(".v-title-item li").length; i++) {
+            $(".v-title-item li").eq(i).css({ transform: `translate(${-left * i}rem, ${top * i}rem)` }) 
+        }
+    }
+    init();
     // $(".list-item").click(function () {
     //     if (index == $(this).attr("data-index")) return;
     //     index = $(this).attr("data-index");

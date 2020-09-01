@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            /* transform: translateY(0%); */
+            /* transition: all 0.5s; */
+        }
+
+        .content section {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content section:nth-child(1) {
+            background-color: lightpink;
+        }
+
+        .content section:nth-child(2) {
+            background-color: lightsteelblue;
+        }
+
+        .content section:nth-child(3) {
+            background-color: lightgrey;
+        }
+
+        .content section:nth-child(4) {
+            background-color: lightyellow;
+        }
+
+        .content section .text {
+            /* font-size: 1rem; */
+            line-height: 200px;
+            text-align: center;
+        }
+
+        .content section.active .text {
+            /* font-size: 1.5rem; */
+            animation: fontDh 2s linear forwards;
+        }
+
+        @keyframes fontDh {
+            0% {
+                font-size: 16px;
+            }
+
+            100% {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <section class="active">
+            <div class="text">第一屏内容</div>
+        </section>
+        <section>
+            <div class="text">第二屏内容</div>
+        </section>
+        <section>
+            <div class="text">第三屏内容</div>
+        </section>
+        <section>
+            <div class="text">第四屏内容</div>
+        </section>
+    </div>
+    <script>
+        // 获取相关元素
+        var content = document.querySelector(".content");
+        var section = document.querySelectorAll("section");
+
+        // 定义开始Y值、移动Y值、结束Y值、索引值
+        var startY = 0;
+        var moveY = 0;
+        var endY = 0;
+        var index = 0;
+        // 获取窗口高度
+        var vHeight = content.offsetHeight;
+        // var speed = vHeight;
+
+        // 触摸事件 触摸开始
+        content.ontouchstart = function (e) {
+            // console.log("test");
+            var e = e || window.event;
+            startY = e.touches[0].pageY;
+            // console.log(startY);
+            
+        }
+        // 触摸移动
+        content.ontouchmove = function (e) {
+            // console.log("test");
+            var e = e || window.event;
+            moveY = e.touches[0].pageY - startY;
+            this.style.transform = "translateY(" + (moveY + endY) + "px)";
+            // console.log(moveY);
+            this.style.transition = "none";
+        }
+        // 触摸结束
+        content.ontouchend = function () {
+            if (moveY < 0) {
+                // console.log("下一屏内容");
+                // index ++;
+                if (moveY < -200) {
+                    index++;
+                    index = index >= section.length - 1 ? section.length - 1 : index++;
+                    // if(index >= section.length - 1){
+                    //     index = section.length - 1;
+                    // }else{
+                    //     index ++;
+                    // }
+                    // this.style.transform = "translateY(" + (-index * vHeight) + "px)";
+                }
+            }
+            if (moveY > 0) {
+                // console.log("上一屏内容");
+                if (moveY > 200) {
+                    index--;
+                    index = index <= 0 ? 0 : index--;
+                    // this.style.transform = "translateY(" + (-index * vHeight) + "px)";
+                }
+
+            }
+            // 移动距离超过一定值则切屏
+            this.style.transform = "translateY(" + (-index * vHeight) + "px)";
+            this.style.transition = "transform 0.3s";
+            // 给每个section标签移除类名
+            for (var i = 0; i < section.length; i++) {
+                section[i].className = "";
+            }
+            // 给当前索引值的section标签加上类名
+            section[index].className = "active";
+            // 结束Y值为当前所在页的偏移值
+            endY = -index * vHeight;
+            // console.log(index);
+        }
+    </script>
+</body>
+
+</html>

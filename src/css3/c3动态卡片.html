@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: steelblue;
+        }
+        ul {
+            list-style: none;
+        }
+
+        body {
+            display: flex;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 340px;
+            height: 520px;
+            background-image: url(./600x600.jpg);
+            background-size: cover;
+            background-position: center;
+            margin: auto;
+            position: relative;
+            top: 30px;
+            left: 0;
+            border-radius: 10px;
+            transition: 0.5s ease-in-out;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50% 200px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .box .mask {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            transition: inherit;
+        }
+
+        .box:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            transition: inherit;
+            background-color: rgba(241, 241, 173, 0.2);
+        }
+
+        .box:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            transition: inherit;
+            background-color: #000;
+            z-index: -1;
+            transform: translateZ(-30px);
+            box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.7);
+        }
+
+        .box ul.chart {
+            display: flex;
+            justify-content: center;
+            transition: inherit;
+        }
+
+        .box ul.chart li {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            margin: 10px;
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: rotate(45deg);
+            transform-style: preserve-3d;
+            transition: inherit;
+        }
+
+        .box ul.chart li .chart-side {
+            content: "";
+            height: 20px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: 0 100%;
+            color: #000;
+            transition: inherit;
+        }
+
+        .box ul.chart li span {
+            content: "";
+            height: 20px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: 0 100%;
+            color: #000;
+            transition: inherit;
+            width: 0;
+            text-align: center;
+            transform: rotateY(-90deg) rotateX(-90deg) translateY(20px);
+        }
+
+        .box ul.chart li:before {
+            content: "";
+            height: 20px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform-origin: 0 100%;
+            color: #000;
+            transition: inherit;
+            width: 20px;
+            background-color: #fff;
+            transform: translateZ(0);
+        }
+
+        .box ul.chart li:after {
+            content: "";
+            height: 20px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: 0 100%;
+            color: #000;
+            transition: inherit;
+            width: 0;
+            transform: rotateY(-90deg) translateZ(-20px);
+        }
+
+        .box.active {
+            transform: rotateX(45deg) translate3d(0, -80px, 60px);
+        }
+
+        .box.active:before {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .box.active ul.chart li:nth-child(1) span {
+            width: 140px;
+        }
+
+        .box.active ul.chart li:nth-child(1):after {
+            width: 140px;
+        }
+
+        .box.active ul.chart li:nth-child(1):before {
+            transform: translateZ(140px);
+        }
+
+        .box.active ul.chart li:nth-child(2) span {
+            width: 120px;
+        }
+
+        .box.active ul.chart li:nth-child(2):after {
+            width: 120px;
+        }
+
+        .box.active ul.chart li:nth-child(2):before {
+            transform: translateZ(120px);
+        }
+
+        .box.active ul.chart li:nth-child(3) span {
+            width: 60px;
+        }
+
+        .box.active ul.chart li:nth-child(3):after {
+            width: 60px;
+        }
+
+        .box.active ul.chart li:nth-child(3):before {
+            transform: translateZ(60px);
+        }
+
+        .box.active ul.chart li:nth-child(4) span {
+            width: 40px;
+        }
+
+        .box.active ul.chart li:nth-child(4):after {
+            width: 40px;
+        }
+
+        .box.active ul.chart li:nth-child(4):before {
+            transform: translateZ(40px);
+        }
+
+        .box.active ul.chart li:nth-child(5) span {
+            width: 20px;
+        }
+
+        .box.active ul.chart li:nth-child(5):after {
+            width: 20px;
+        }
+
+        .box.active ul.chart li:nth-child(5):before {
+            transform: translateZ(20px);
+        }
+
+        .box.active ul.chart li:nth-child(6) span {
+            width: 80px;
+        }
+
+        .box.active ul.chart li:nth-child(6):after {
+            width: 80px;
+        }
+
+        .box.active ul.chart li:nth-child(6):before {
+            transform: translateZ(80px);
+        }
+
+        .box.active ul.chart li:nth-child(7) span {
+            width: 100px;
+        }
+
+        .box.active ul.chart li:nth-child(7):after {
+            width: 100px;
+        }
+
+        .box.active ul.chart li:nth-child(7):before {
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>STEPS</h3>
+        <h4>THIS WEEK</h4>
+        <ul class="chart">
+            <li><span>7</span></li>
+            <li><span>6</span></li>
+            <li><span>3</span></li>
+            <li><span>2</span></li>
+            <li><span>1</span></li>
+            <li><span>4</span></li>
+            <li><span>5</span></li>
+        </ul>
+        <h2>93,000</h2>
+    </div>
+    <script>
+        document.querySelector(".box").onclick = function () {
+            this.classList.toggle("active");
+        }
+    </script>
+</body>
+
+</html>

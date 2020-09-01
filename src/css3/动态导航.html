@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航菜单</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav {
+            position: relative;
+        }
+
+        .btn {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            left: -100px;
+            top: -100px;
+            z-index: 1000;
+        }
+
+        .nav .list li {
+            width: 80px;
+            height: 80px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 80px;
+            border-radius: 50%;
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            /* 设置过渡属性 */
+            transition: all 0.5s;
+            font-size: 14px;
+        }
+
+        .nav .list li:hover {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="btn"></div>
+        <ul class="list">
+            <li>QQ</li>
+            <li>WECHAT</li>
+            <li>抖音</li>
+            <li>网易</li>
+        </ul>
+    </nav>
+
+
+    <script>
+        // 需求：
+        // 导航菜单
+        // 步骤：
+        // 1.0 声明类
+        class Page {
+            //1.0.1 添加属性
+            constructor(btnToggle, items) {
+                this.btnToggle = btnToggle;
+                this.items = items;
+            }
+            // 1.0.2 添加方法 设置元素的位置
+            setPosition(dom, point) {
+                // 设置元素的位置
+                dom.style.left = point.x + "px";
+                dom.style.top = point.y + "px";
+            }
+            // 1.0.3 添加方法 计算坐标位置
+            getPosition(angle, radius) { //角度 ，半径
+                return {
+                    x: Math.cos(angle * Math.PI / 180) * radius,
+                    y: Math.sin(angle * Math.PI / 180) * radius
+                }
+            }
+            // 添加方法 事件
+            addEvent() {
+                // 添加属性
+                this.bool = true;
+                // 事件绑定
+                this.btnToggle.onclick = () => {
+                    // 根据布尔值 
+                    if (this.bool) {
+                        // 设置导航菜单散开
+                        for (let i = 0; i < this.items.length; i++) {
+                            this.setPosition(this.items[i], this.getPosition(i * 30, 220))
+                        }
+                        // 设置布尔值为false
+                        this.bool = false;
+                    } else {
+                        // 设置第一个元素的位置
+                        // this.setPosition( this.items[0] , this.getPosition(0 , 0))
+                        // 让每个菜单回到原来的位置
+                        for (let i = 0; i < this.items.length; i++) {
+                            this.setPosition(this.items[i], this.getPosition(i * 30, 0))
+                        }
+                        // 设置布尔值为 true
+                        this.bool = true;
+                    }
+                }
+            }
+            // 定义初始化函数
+            init() {
+                // 调用方法
+                this.addEvent();
+            }
+        }
+
+        // 实例化对象
+        let page = new Page(
+            document.querySelector(".btn"),
+            document.querySelectorAll(".list li")
+        );
+        // 调用Page函数里的初始化函数
+        page.init();
+
+    </script>
+</body>
+
+</html>

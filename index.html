@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HDD0207.github.io</title>
+    <title>Welcome To My GitHub</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -16,7 +16,13 @@
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
     <link rel="stylesheet" href="./src/css/index.css">
-
+    <style>
+        html,
+        body,
+        a {
+            cursor: url("./src/images/Arrow.cur"), auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +30,7 @@
         <nav>
             <ul class="list-nav">
                 <a href="#item1">
-                    <li data-index="0" class="list-item">HTML</li>
+                    <li data-index="0" class="list-item">Js&Jq</li>
                 </a>
                 <a href="#item2">
                     <li data-index="1" class="list-item">Css3</li>
@@ -49,7 +55,7 @@
         </nav>
         <main>
             <div class="item" id="item1">
-                <span class="v-title">HTML</span>
+                <span class="v-title">Js&Jq</span>
                 <a class="v-item col-md-4 col-sm-6 col-xs-12">
                     <div class="img-box">
                         <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
@@ -59,35 +65,49 @@
             </div>
             <div class="item" id="item2">
                 <span class="v-title">Css3</span>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
-                    </div>
-                    <h3 class="text">list1</h3>
-                </a>
+                <div class="img-box">
+                    <a href="./src/css3/c3动态卡片.html" title="动态卡片" target="_blank"><img src="./src/images/3d动态卡片.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/3d导航条.html" title="3d导航条" target="_blank"><img src="./src/images/3d导航.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/移动端全屏切换.html" target="_blank" title="移动端全屏切换"><img src="./src/images/移动端全屏切换.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/动态导航.html" target="_blank" title="动态导航"><img src="./src/images/动态导航.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/旋转星球.html"target="_blank" title="旋转星球"><img src="./src/images/旋转星球.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/运动小球.html" title="运动小球" target="_blank"><img src="./src/images/3d运动小球.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/移动端下拉切换图片.html" title="移动端下拉切换图片" target="_blank"><img src="./src/images/移动端下拉切换图片.png" alt="图片未加载..."></a>
+                    <a href="./src/css3/鼠标悬停相册.html" target="_blank" title="鼠标悬停动画"><img src="./src/images/悬停动画.png" alt="图片未加载..."></a>
+                </div>
             </div>
             <div class="item" id="item3">
-                <span class="v-title">Vue</span>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist1/index.html">
+                <span class="v-title">Vue项目(移动端)</span>
+                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist1/index.html" target="_blank">
                     <div class="img-box">
                         <img src="./src/images/vue-book.png" alt="图片未加载..." class="img-responsive auto-img">
                     </div>
-                    <h3 class="text">list1</h3>
+                    <h3 class="text">墨香书城</h3>
                 </a>
-                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist2/index.html">
+                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist2/index.html" target="_blank">
                     <div class="img-box">
                         <img src="./src/images/coffee.png" alt="图片未加载..." class="img-responsive auto-img">
                     </div>
-                    <h3 class="text">list1</h3>
+                    <h3 class="text">咖啡商城</h3>
+                </a>
+                <a class="v-item col-md-4 col-sm-6 col-xs-12" href="./src/vue/dist3/index.html" target="_blank">
+                    <div class="img-box">
+                        <img src="./src/images/仿iphone悬浮球.png" alt="图片未加载..." class="img-responsive auto-img">
+                    </div>
+                    <h3 class="text">仿iphone悬浮球</h3>
                 </a>
             </div>
             <div class="item" id="item4">
-                <span class="v-title">WeChat</span>
+                <span class="v-title">WeChat小程序</span>
                 <a class="v-item col-md-4 col-sm-6 col-xs-12">
                     <div class="img-box">
                         <img src="./src/images/wechat.png" alt="图片未加载..." class="img-responsive auto-img v-img">
+                        <div class="mask">
+                            <img class="img-responsive auto-img mask-img" src="./src/images/wechat-1.png"
+                                alt="图片未加载...">
+                        </div>
                     </div>
-                    <h3 class="text">list1</h3>
+                    <h3 class="text">今天你记账了吗</h3>
                 </a>
             </div>
             <span class="goTop">

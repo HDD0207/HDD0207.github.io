@@ -61,31 +61,42 @@ ul, ol {
 
 /* ↑ 默认样式 */
 
+html, body {
+    overflow-y: auto;
+    border-radius: .3rem;
+    /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+    -ms-overflow-style: none;
+    /*火狐下隐藏滚动条*/
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
+}
+
 .content {
-    width: 99%;
-    height: 99%;
-    position: fixed;
-    left: .5%;
-    top: .5%;
+    width: 99.4%;
+    height: 99.4%;
+    margin: .3%;
     box-shadow: inset 0 0 1rem #ccc;
-    padding: .4rem;
+    padding: .3rem;
     border-radius: .3rem;
     box-sizing: border-box;
-    background: linear-gradient(to bottom, #f5f5f5, lightsteelblue);
+    background: linear-gradient(to bottom, #f3f3f3, lightsteelblue);
     overflow: hidden;
-    z-index: -1;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .4rem .2rem;
+    padding: .2rem;
     box-sizing: border-box;
     position: fixed;
-    width: calc(99% - 0.8rem);
+    width: 99%;
+    top: 0;
+    left: .5%;
     box-sizing: border-box;
-    top: 1%;
     z-index: 1;
 }
 
@@ -115,36 +126,23 @@ nav .title {
 }
 
 nav .title .v-title-item {
+    display: none;
     position: absolute;
     border-radius: 50%;
-    /* border: 1px solid #ccc; */
     padding: .2rem;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     top: 0;
     right: 0;
-    margin-right: -5rem;
-    margin-top: -5rem;
+    /* margin-right: -5rem;
+    margin-top: -5rem; */
     text-align: center;
     background-color: #fff;
 }
 
 nav .title .v-title-item li {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    padding: .2rem;
-    background-color: #000;
+    line-height: 1.5;
 }
-/* nav .title .v-title-item li:nth-child(1){
-    transform: translate(0 ,0);
-}
-nav .title .v-title-item li:nth-child(2){
-    transform: translate(0, 2rem);
-}
-nav .title .v-title-item li:nth-child(1){
-    transform: translate(0 ,4rem);
-} */
 
 nav .list-nav .list-item {
     margin-right: .3rem;
@@ -160,15 +158,21 @@ nav .list-nav .list-item {
 
 .list-nav .list-item:hover {
     color: steelblue;
+    transform: scale(1.1);
+    transition: transform .3s linear;
 }
 
 main {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     position: relative;
     border-radius: .3rem;
+    /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+    -ms-overflow-style: none;
+    /*火狐下隐藏滚动条*/
+    scrollbar-width: none;
 }
 
 main::-webkit-scrollbar {
@@ -193,8 +197,11 @@ main .item:last-of-type {
 }
 
 main .item .v-title {
+    margin: .5rem 0;
     width: 100%;
     text-align: center;
+    color: lightsteelblue;
+    text-shadow: 1px 1px 1px steelblue;
 }
 
 main .item .v-item {
@@ -211,7 +218,10 @@ main .item .v-item {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    border-radius: 1rem;
+}
+
+.item .v-item .img-box img {
+    border-radius: .3rem;
 }
 
 #item1 .v-item .img-box:hover img {
@@ -219,36 +229,87 @@ main .item .v-item {
     transform: scale(1.1);
 }
 
-#item2 .v-item .img-box {
-    transition: box-shadow .3s linear, color .3s linear;
+#item2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
 }
 
-#item2 .v-item:hover .img-box {
-    background-color: #fff;
-    box-shadow: 2px 2px 5px #ccc;
-    color: lightsteelblue;
+#item2 .img-box {
+    position: relative;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
 }
 
-.item .v-item .text {
-    cursor: pointer;
+#item2 .img-box img {
+    border-radius: 1rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    opacity: .8;
+    transition: transform .5s ease-in-out,opacity .3s ease-out;
+    box-shadow: 1px 1px 5px #fff;
 }
 
-#item3 .v-item:hover {
+#item2 .img-box:hover a:nth-child(8) img {
+    transform: translate(-17rem);
+}
+
+#item2 .img-box:hover a:nth-child(7) img {
+    transform: translate(-12rem);
+}
+
+#item2 .img-box:hover a:nth-child(6) img {
+    transform: translate(-7rem);
+}
+
+#item2 .img-box:hover a:nth-child(5) img {
+    transform: translate(-2rem);
+}
+
+#item2 .img-box:hover a:nth-child(4) img {
+    transform: translate(3rem);
+}
+
+#item2 .img-box:hover a:nth-child(3) img {
+    transform: translate(8rem);
+}
+
+#item2 .img-box:hover a:nth-child(2) img {
+    transform: translate(13rem);
+}
+
+#item2 .img-box:hover a:nth-child(1) img {
+    transform: translate(18rem);
+}
+
+#item2 .img-box a img:hover {
+    z-index: 1;
+    opacity: 1;
+}
+
+#item3 .v-item .img-box:hover {
     animation: item3-animation .5s linear;
 }
-
 @keyframes item3-animation {
     0% {
         transform: rotate(0);
     }
     25% {
-        transform: rotate(5deg);
+        transform: rotate(3deg);
     }
     50% {
-        transform: rotate(-3deg);
+        transform: rotate(-2deg);
     }
     75% {
-        transform: rotate(4deg);
+        transform: rotate(1deg);
     }
     100% {
         transform: rotate(0);
@@ -257,46 +318,47 @@ main .item .v-item {
 
 #item4 .v-item .img-box {
     position: relative;
-    /* overflow: unset; */
+    border-radius: .5rem;
 }
 
-#item4 .v-item .v-img {
-    position: relative;
-}
-
-#item4 .v-item .v-img::after {
+#item4 .v-item .mask {
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
-    display: block;
+    display: flex;
+    align-items: center;
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: width .5s linear, opacity .5s linear;
+}
+
+#item4 .v-item:hover .mask {
+    opacity: 1;
     width: 100%;
     height: 100%;
-    width: 500px;
-    height: 200px;
-    border: 1px solid #ccc;
-    background-color: #000;
-    transform: scale(1.2);
-    animation: item4-animation .5s linear;
+    transition: width .5s linear, opacity .5s linear;
 }
 
-#item4 .v-item:hover .v-img::after {
-    position: absolute;
+#item4 .v-item .mask .mask-img {
+    width: 100%;
+    display: hidden;
+    transform: translateY(-5rem);
+    transition: transform .5s linear;
 }
 
-@keyframes item4-animation {
-    0% {
-        border-color: steelblue;
-        border-radius: .25rem;
-    }
-    50% {
-        border-color: lightsteelblue;
-        border-radius: .5rem;
-    }
-    100% {
-        border-color: transparent;
-        border-radius: .75rem;
-    }
+#item4 .v-item:hover .mask .mask-img {
+    display: block;
+    transform: translateY(0);
+    transition: transform .5s linear;
+    transition-delay: .3s;
+    -moz-transition-delay: .3s;
+    /* Firefox 4 */
+    -webkit-transition-delay: .3s;
+    /* Safari 和 Chrome */
+    -o-transition-delay: .3s;
 }
 
 .goTop {

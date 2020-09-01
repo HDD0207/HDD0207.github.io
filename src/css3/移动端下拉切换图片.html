@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* background-color: rgba(128, 128, 128, 0.); */
+            background-color: #666;
+            /* opacity: 0.6; */
+        }
+
+        .box {
+            position: relative;
+            max-width: 640px;
+            margin: 0 auto;
+            height: 100%;
+            /* border: 1px solid #000; */
+        }
+
+        .box .mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* background-color: rgba(125,125,125,0.5); */
+            background-color: #666;
+            opacity: 0.3;
+        }
+
+        .box .pull {
+            position: fixed;
+            width: 60px;
+            height: 100px;
+            /* background-color: #ccc; */
+            right: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        .box .pull span {
+            display: block;
+        }
+
+        .box .pull .line {
+            /* display: block; */
+            position: relative;
+            left: 50%;
+            top: 0;
+            margin-left: -1px;
+            width: 2px;
+            height: 30px;
+            background-color: #fff;
+            /* transition: all 0.1s linear; */
+        }
+
+        .box .pull .pullBtn {
+            position: relative;
+            left: 50%;
+            margin-left: -10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 1px 1px 2px #000;
+        }
+
+        /* .box .pull:hover .line{
+            height: 100px;
+            transition: all 1s linear;
+        } */
+        .box .imgBox {
+            position: relative;
+            top: 50%;
+            margin-top: -150px;
+            width: 100%;
+            height: 300px;
+            vertical-align: middle;
+            border-top-left-radius: 5%;
+            border-top-right-radius: 5%;
+            /* border-radius: 30px; */
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .box .imgBox img {
+            display: block;
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            /* transition: all 1s linear; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="mask"></div>
+        <div class="pull">
+            <span class="line"></span>
+            <span class="pullBtn" draggable="false"></span>
+        </div>
+        <div class="imgBox">
+            <img src="./images/t1.jpeg" alt="">
+        </div>
+    </div>
+    <script>
+        // 获取相关元素
+        var pullBtn = document.querySelector(".pullBtn");
+        var line = document.querySelector(".line");
+        var img = document.querySelector(".imgBox img");
+
+        // 获取当前线的高度
+        var pullBtnTop = pullBtn.offsetHeight;
+        // console.log(pullBtnTop); 
+        // console.log(imgBox);
+        
+        // 定义开始的位置 移动的位置 图片索引
+        var startY = 0;
+        var moveY = 0;
+        var n = 1;
+
+        // 移动端下拉切换图片
+        // 手指按下
+        pullBtn.ontouchstart = function (e) {
+            //  console.log("test");
+            var e = e || window.event;
+            startY = e.touches[0].pageY;
+            //  console.log(startY);
+        }
+
+        // 手指滑动
+        pullBtn.ontouchmove = function (e) {
+            //  console.log("test");
+            var e = e || window.event;
+            moveY = e.touches[0].pageY - startY + pullBtnTop;
+            line.style.height = moveY + "px";
+        }
+        
+        // 手指松开
+        pullBtn.ontouchend = function () {
+            // 判断移动的距离是否大于90px
+            if (moveY > 90) {
+                // console.log("切换图片");
+                // console.log(img.src);
+                // 图片索引值自增
+                n++;
+                // 判断索引值是否大于8
+                if (n > 8) {
+                    n = 1;
+                }
+                // 移动距离超过90px则切换下一张图片
+                img.src = "./images/t" + n + ".jpeg";
+            }
+            // else {
+            //     // console.log("未切换图片");
+            // }
+            // 线的高度跟着改变
+            line.style.height = pullBtnTop + "px";
+        }
+
+        // pc端下拉切换图片 体验不好
+        // var startY1 = 0;
+        // var moveY1 = 0;
+        // var n1 = 1;
+        // pullBtn.onmouseenter = function (e) {
+        //     var e = e || win.event;
+        //     startY1 = e.pageY;
+        //     // console.log(startY1);
+        //     line.style.height = pullBtnTop + "px";
+
+        //     this.onmousemove = function (e) {
+        //         var e = e || win.event;
+        //         moveY1 = e.pageY - startY1 + pullBtnTop;
+        //         line.style.height = moveY1 + "px";
+        //     }
+        //     this.onmouseup = function(){
+        //         if (moveY1 > 80) {
+        //             n1++;
+        //             if (n1 > 8) {
+        //                 n1 = 1;
+        //             }
+        //             img.src = "./images/t" + n1 + ".jpeg";
+        //         }
+        //         else {
+        //             line.style.height = pullBtnTop + "px";
+        //             pullBtn.onmousemove = null;
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

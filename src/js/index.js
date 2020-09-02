@@ -1,6 +1,7 @@
 $(() => {
     $(window).on("load",function(){
         $(".v-mask").fadeOut(500)
+        $("html,body").css({overflowY:"auto"})
     })
     let index = 0;
     let goTop = $(".goTop")

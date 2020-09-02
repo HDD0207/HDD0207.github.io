@@ -456,10 +456,11 @@ main .item .v-item .text{
     bottom: 0;
     right: 1rem;
     font-size: .6rem;
-    color: steelblue;
+    color: lightsteelblue;
+    text-align: right;
 }
 .v-mask .v-mask-title{
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-shadow: 1px 1px 3px #333;
 }
 .v-mask img{

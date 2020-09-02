@@ -15,7 +15,6 @@ $(() => {
             $("html,body").css({ overflowY: "auto" });
         };
     }
-    let index = 0;
     let goTop = $(".goTop")
     goTop.hide(500);
     $(document).scroll(function () {
@@ -27,7 +26,6 @@ $(() => {
         }
     })
     goTop.click(function () {
-        index = 0;
         $("html,body").animate({ scrollTop: 0 }, 500);
     })
     let bool = true;

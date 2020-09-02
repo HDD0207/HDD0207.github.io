@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <canvas style="border: 1px solid #ccc;"></canvas>
+    </div>
+    <h3>按下键盘方向键创建方块</h3>
+</body>
+<script>
+    // 获取元素
+    var canvas = document.querySelector("canvas");
+    // 设置画布宽高
+    canvas.width = 800;
+    canvas.height = 500;
+    var ctx = canvas.getContext("2d");
+
+    // 画纵轴
+    ctx.beginPath();
+    ctx.moveTo(50, 450);
+    ctx.lineTo(50, 50);
+    ctx.lineTo(40, 60);
+    ctx.lineTo(50, 50);
+    ctx.lineTo(60, 60);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#ccc";
+    ctx.stroke();
+    ctx.closePath();
+    // 画横轴
+    ctx.beginPath();
+    ctx.moveTo(50, 450);
+    ctx.lineTo(750, 450);
+    ctx.lineTo(740, 440);
+    ctx.lineTo(750, 450);
+    ctx.lineTo(740, 460);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#ccc";
+    ctx.stroke();
+    ctx.closePath();
+
+    // 定义行、列
+    var row = 5;
+    var col = 10;
+    // 定义尺寸
+    var size = 60;
+    // 画行
+    // 400 - 5 * 60  100 
+    // console.log((400 - row * size) + 1 * size);
+    // 定义空数组用于存放位置
+    var arr1 = [];
+    for (var i = 0; i < row; i++) {
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.moveTo(50, (400 - row * size) + i * size + 50);
+        ctx.lineTo(650, (400 - row * size) + i * size + 50);
+        ctx.strokeStyle = "lightpink";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.closePath();
+        arr1.push((400 - row * size) + i * size + 50);
+    }
+    // 定义空数组用于存放位置
+    var arr = [];
+    // 画列
+    // 600 - 10 * 60
+    for (var j = 1; j <= col; j++) {
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.moveTo((600 - col * size) + j * size + 50, 400 - row * size + 50);
+        ctx.lineTo((600 - col * size) + j * size + 50, 450);
+        ctx.strokeStyle = "skyblue";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.closePath();
+        arr.push((600 - col * size) + j * size + 50);
+    }
+    // console.log(arr);
+    // ctx.fillStyle = "royalblue";
+    // ctx.rect(51, 400 - row * size + 51, size - 2, size - 2);
+    // ctx.fill();
+    // 默认矩形
+    ctx.fillStyle = "royalblue";
+    ctx.rect(51, 151, size - 2, size - 2);
+    ctx.fill();
+
+    // console.log(arr1);
+
+    // 位置索引值
+    var index = 0;
+    var index1 = 0;
+    // 键盘事件
+    document.onkeydown = function (e) {
+        var e = e || window.event;
+        console.log(e.keyCode);
+        // ctx.clearRect();
+
+        // 右
+        if (e.keyCode == "39") {
+            index++;
+            if (index > col - 1) {
+                index = index - 1;
+            }
+        }
+
+        // 下
+        if (e.keyCode == "40") {
+            index1++;
+            if (index1 >= row - 1) {
+                index1 = row - 1;
+            }
+        }
+
+        // 左
+        if (e.keyCode == "38") {
+            index1--;
+            if (index1 <= 0) {
+                index1 = 0;
+            }
+        }
+        // 上
+        if (e.keyCode == "37") {
+            index--;
+            if (index <= 0) {
+                index = 0;
+            }
+        }
+
+        // 画矩形
+        ctx.fillStyle = "royalblue";
+        ctx.rect(arr[index] - size + 1, arr1[index1] + 1, size - 2, size - 2, size - 2);
+        ctx.fill();
+    }
+</script>
+
+</html>

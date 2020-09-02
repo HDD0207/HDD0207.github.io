@@ -1,4 +1,7 @@
 $(() => {
+    $(window).on("load",function(){
+        $(".v-mask").fadeOut(500)
+    })
     let index = 0;
     let goTop = $(".goTop")
     goTop.hide(500);

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .content {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .smallBox {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #eee;
+            float: left;
+            background-image: url(./images/1_middle.jpg);
+            position: relative;
+        }
+
+        .smallBox .mask {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(41, 74, 223, 0.3);
+            display: none;
+            left: 0;
+            top: 0;
+            cursor: move;
+        }
+
+        .list {
+            position: absolute;
+            width: 450px;
+            /* height: 450px; */
+            /* height: 56px; */
+            /* bottom: -64px; */
+            /* border: 1px solid skyblue; */
+            margin-top: 460px;
+        }
+
+        .list li {
+            float: left;
+            width: 54px;
+            height: 54px;
+            margin: 0 8px;
+            border: 2px solid transparent;
+        }
+
+        .list li.active {
+            border: 2px solid purple;
+        }
+
+        .list li img {
+            display: block;
+            width: 100%;
+        }
+
+        .bigBox {
+            display: none;
+            width: 550px;
+            height: 550px;
+            border: 1px solid #eee;
+            float: left;
+            margin-left: -1px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bigBox img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="smallBox">
+            <div class="mask"></div>
+        </div>
+        <div class="bigBox"><img src="./images/1_big.jpg" alt=""></div>
+        <ul class="list">
+            <li class="active"><img src="./images/1_small.jpg" alt=""></li>
+            <li><img src="./images/2_small.jpg" alt=""></li>
+            <li><img src="./images/3_small.jpg" alt=""></li>
+            <li><img src="./images/4_small.jpg" alt=""></li>
+            <li><img src="./images/5_small.jpg" alt=""></li>
+            <li><img src="./images/6_small.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        // 获取小盒子
+        var smallBox = document.querySelector(".smallBox");
+        // 获取存放大图片的盒子
+        var bigBox = document.querySelector(".bigBox");
+        // 获取大图片
+        var bigBoxImg = document.querySelector(".bigBox img");
+        // 获取存放小图片的li标签列表
+        var lis = document.querySelectorAll(".list li");
+        // 获取小图片列表
+        var imgList = document.querySelectorAll(".list li img");
+        // 获取遮罩层
+        var mask = document.querySelector(".mask");
+        // 获取小盒子的左偏移值
+        var sBoxLeft = smallBox.offsetLeft;
+        // 获取小盒子的真实宽度
+        var sBoxWidth = smallBox.offsetWidth;
+        // 获取小盒子的真实高度
+        var sBoxHeight = smallBox.offsetHeight;
+        // console.log(sBoxWidth, sBoxHeight);
+
+        // 给小盒子绑定鼠标移入事件
+        smallBox.onmouseenter = function () {
+            // 鼠标移入小盒子 遮罩层跟大图片盒子显示
+            mask.style.display = "block";
+            bigBox.style.display = "block";
+
+            // 获取遮罩层的真实宽度跟高度
+            var maskWidth = mask.offsetWidth;
+            var maskHeight = mask.offsetHeight;
+            // console.log(maskWidth, maskHeight);
+
+            // 如果遮罩层显示
+            if (mask.style.display) {
+                // 给页面绑定鼠标移动事件
+                document.onmousemove = function (event) {
+                    var event = event || window.event;
+                    // var x = event.pageX
+                    // var y = event.pageY;
+                    // 计算遮罩层在小盒子里移动的left top值
+                    var x = event.pageX - sBoxLeft - maskWidth / 2;
+                    var y = event.pageY - maskHeight / 2;
+                    // 定义遮罩层的最大最小移动距离 移动范围
+                    x = x < 0 ? 0 : x;
+                    x = x > sBoxWidth - maskWidth ? sBoxWidth - maskWidth : x;
+                    y = y < 0 ? 0 : y;
+                    y = y > sBoxHeight - maskHeight ? sBoxHeight - maskHeight : y;
+                    // console.log(x, y);
+                    // 鼠标移动时遮罩层跟随移动
+                    mask.style.left = x + "px";
+                    mask.style.top = y + "px";
+                    // 计算大图片的移动距离
+                    // 遮罩层的偏移值 / 遮罩层的最大移动范围 = 大图片的偏移值 / 大图片的最大移动范围
+                    // 大图片的偏移值 = 小图片.offsetLeft / 小图片.offsetWidth * 大图片.offsetWidth
+                    var bX = mask.offsetLeft / sBoxWidth * bigBoxImg.offsetWidth;
+                    var bY = mask.offsetTop / sBoxHeight * bigBoxImg.offsetHeight;
+                    // 设置大图片的移动值
+                    bigBoxImg.style.left = -bX + "px";
+                    bigBoxImg.style.top = -bY + "px";
+                }
+            }
+
+        }
+
+        // 给小图片盒子绑定鼠标移出事件
+        smallBox.onmouseleave = function () {
+            // 鼠标移出 小盒子遮罩层 大盒子 隐藏
+            mask.style.display = "none";
+            bigBox.style.display = "none";
+        }
+
+        // var index = 0;
+        for (var i = 0; i < imgList.length; i++) {
+            // console.log(i);
+            // 闭包,设置索引
+            (function (index) {
+                index++;
+                // 给每个小预览图绑定鼠标移入事件
+                imgList[i].onmouseenter = function () {
+                    // console.log(index);
+                    // 设置当前对应的大小图片
+                    smallBox.style.backgroundImage = "url(./images/" + index + "_middle.jpg)";
+                    bigBoxImg.src = "./images/" + index + "_big.jpg";
+                }
+            })(i);
+
+            // 给每个图片预览图列表绑定鼠标移入事件
+            lis[i].onmouseenter = function () {
+                // 排他思想
+                for (var j = 0; j < lis.length; j++) {
+                    // 其他元素移除类名
+                    lis[j].className = "";
+                }
+                // 当前元素加上类名
+                this.className = "active";
+            }
+        }
+    </script>
+</body>
+
+</html>

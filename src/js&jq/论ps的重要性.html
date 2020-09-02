@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .box {
+            width: 500px;
+            /* height: 500px; */
+            margin: 0 auto;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box .before {
+            width: 100%;
+            height: 500px;
+            background-image: url(./images/before.jpg);
+            background-size: auto 500px;
+            z-index: -1;
+        }
+
+        .box .after {
+            width: 50%;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url(./images/after.jpg);
+            background-size: auto 500px;
+        }
+
+        .box input {
+            width: 100%;
+            /* height: 20px; */
+            height: 100%;
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            margin: 0;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .box .range {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            bottom: 5px;
+            z-index: 0;
+        }
+
+        .box .range span {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin-left: -5px;
+            display: block;
+            width: 10px;
+            height: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="before"></div>
+        <div class="after"></div>
+        <input type="range" min="0" , max="100">
+        <div class="range">
+            <span></span>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        $(".box input").bind("input", function () {
+            // console.log($(this).val());
+            $(".after").css("width", $(this).val() + "%");
+            $(".range span").css("left" ,$(this).val() + "%");
+        })
+    })
+
+</script>
+
+</html>

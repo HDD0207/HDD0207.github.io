@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+
+        #inp {
+            margin: 0;
+            padding: 5px;
+            padding-left: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照商品名称查询: <input type="text" class="product" id="inp">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米9',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀V20',
+            price: 1699
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }, {
+            id: 5,
+            pname: '华为nova',
+            price: 1999
+        }, {
+            id: 6,
+            pname: '华为P30',
+            price: 2999
+        }, {
+            id: 7,
+            pname: '华为Mate',
+            price: 5999
+        }, {
+            id: 8,
+            pname: '小米10',
+            price: 4999
+        }, {
+            id: 9,
+            pname: '荣耀V30',
+            price: 3599
+        },];
+
+        // 获取相关元素
+        var tbody = document.querySelector("tbody");
+        var inp = document.querySelector("#inp");
+        // console.log(tbody , inp);
+        // 封装生成产品列表函数
+        function setData(myData) {
+            // tbody里面的元素设置为空
+            tbody.innerHTML = "";
+            // 遍历数组 生成产品
+            myData.forEach(function (value) {
+                // 创建 tr 元素
+                var tr = document.createElement("tr");
+                tr.innerHTML = "<td>" + value.id + "</td>"
+                tr.innerHTML += "<td>" + value.pname + "</td>";
+                tr.innerHTML += "<td>" + value.price + "</td>";
+                // console.log(tr);
+                // 把生成的元素添加到 tbody里面
+                tbody.appendChild(tr);
+            });
+
+        }
+        // 调用 生成产品方法
+        setData(data);
+        // 输入框添加输入内容运行的方法
+        inp.oninput = function () {
+            // console.log(this.value.length);
+            var value = this.value;
+            // value.indexOf();
+            // console.dir(value.indexOf("小"));
+            // fn(data, value);
+            // 调用 生成产品方法
+            setData(fn(data, value))
+        }
+        // 封装 判断字符串是否存在方法
+        function fn(data, value) {
+            // 定义一个新数组
+            var arr = [];
+            // 循环判断输入的字符串在数据里是否存在
+            for (var i = 0; i < data.length; i++) {
+                // 如果存在 则添加到新数组里面
+                if (data[i].pname.indexOf(value) >= 0) {
+                    arr.push(data[i]);
+                    // console.log(data[i]);
+                    // console.log(arr);
+                }
+            }
+            return arr;
+        }
+        // fn("华为");
+    </script>
+</body>
+
+</html>

@@ -24,7 +24,7 @@
         .btn {
             width: 200px;
             height: 200px;
-            background-color: blue;
+            background-color: lightsteelblue;
             border-radius: 50%;
             cursor: pointer;
             position: absolute;
@@ -71,23 +71,20 @@
 
 
     <script>
-        // 需求：
-        // 导航菜单
-        // 步骤：
-        // 1.0 声明类
+        //  声明类
         class Page {
-            //1.0.1 添加属性
+            //添加属性
             constructor(btnToggle, items) {
                 this.btnToggle = btnToggle;
                 this.items = items;
             }
-            // 1.0.2 添加方法 设置元素的位置
+            //  添加方法 设置元素的位置
             setPosition(dom, point) {
                 // 设置元素的位置
                 dom.style.left = point.x + "px";
                 dom.style.top = point.y + "px";
             }
-            // 1.0.3 添加方法 计算坐标位置
+            //  添加方法 计算坐标位置
             getPosition(angle, radius) { //角度 ，半径
                 return {
                     x: Math.cos(angle * Math.PI / 180) * radius,

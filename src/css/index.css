@@ -74,6 +74,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
 }
 
+html, body, a {
+    cursor: url("../images/Arrow.cur"), auto;
+}
+
 .content {
     width: 99.4%;
     height: 99.4%;
@@ -85,6 +89,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     background: linear-gradient(to bottom, #f3f3f3, lightsteelblue);
     overflow: hidden;
 }
+
+/* 导航start */
 
 nav {
     display: flex;
@@ -126,18 +132,60 @@ nav .title {
 }
 
 nav .title .v-title-item {
-    display: none;
     position: absolute;
-    border-radius: 50%;
-    padding: .2rem;
-    width: 8rem;
-    height: 8rem;
+    padding: .2rem 0;
     top: 0;
     right: 0;
-    /* margin-right: -5rem;
-    margin-top: -5rem; */
     text-align: center;
+    z-index: -1;
+    font-size: .8rem;
+}
+
+nav .title .v-title-item li {
+    border-radius: .2rem;
     background-color: #fff;
+    box-shadow: 1px 1px 3px #ccc;
+    margin: .2rem;
+    padding: 0 .2rem;
+    opacity: 0;
+    transform: translateX(10rem);
+    transition: transform .5s ease-out, opacity .3s ease-out;
+}
+
+nav .title .v-title-item li:hover {
+    background-color: #eee;
+    color: steelblue;
+    transition: background-color .5s ease-out, color .5s ease-out;
+}
+
+nav .title:hover .v-title-item li {
+    transform: none;
+    opacity: 1;
+    transition: transform .5s ease-out, opacity .3s ease-out;
+}
+
+nav .title:hover .v-title-item li:nth-child(1) {
+    transition-delay: 200ms;
+}
+
+nav .title:hover .v-title-item li:nth-child(2) {
+    transition-delay: 400ms;
+}
+
+nav .title:hover .v-title-item li:nth-child(3) {
+    transition-delay: 600ms;
+}
+
+nav .title:hover .v-title-item li:nth-child(4) {
+    transition-delay: 800ms;
+}
+
+nav .title:hover .v-title-item li:nth-child(5) {
+    transition-delay: 1s;
+}
+
+nav .title:hover .v-title-item li:nth-child(6) {
+    transition-delay: 1.2s;
 }
 
 nav .title .v-title-item li {
@@ -159,8 +207,10 @@ nav .list-nav .list-item {
 .list-nav .list-item:hover {
     color: steelblue;
     transform: scale(1.1);
-    transition: transform .3s linear;
+    transition: transform .3s ease-out;
 }
+
+/* 导航end */
 
 main {
     box-sizing: border-box;
@@ -217,16 +267,21 @@ main .item .v-item {
     width: 100%;
     display: flex;
     justify-content: center;
-    overflow: hidden;
 }
 
 .item .v-item .img-box img {
     border-radius: .3rem;
 }
 
+#item1 .v-item .img-box img {
+    width: 15rem;
+    height: 15rem;
+}
+
 #item1 .v-item .img-box:hover img {
-    transition: transform .3s linear;
-    transform: scale(1.1);
+    box-shadow: 1px 1px 8px 1px #ccc;
+    transform: scale(1.05);
+    transition: box-shadow .3s ease-in-out,transform .3s ease-in-out;
 }
 
 #item2 {
@@ -254,8 +309,8 @@ main .item .v-item {
     right: 0;
     margin: auto;
     opacity: .8;
-    transition: transform .5s ease-in-out,opacity .3s ease-out;
-    box-shadow: 1px 1px 5px #fff;
+    transition: transform .5s ease-in-out, opacity .3s ease-out;
+    box-shadow: 1px 1px 8px #999;
 }
 
 #item2 .img-box:hover a:nth-child(8) img {
@@ -298,6 +353,7 @@ main .item .v-item {
 #item3 .v-item .img-box:hover {
     animation: item3-animation .5s linear;
 }
+
 @keyframes item3-animation {
     0% {
         transform: rotate(0);
@@ -319,6 +375,7 @@ main .item .v-item {
 #item4 .v-item .img-box {
     position: relative;
     border-radius: .5rem;
+    overflow: hidden;
 }
 
 #item4 .v-item .mask {

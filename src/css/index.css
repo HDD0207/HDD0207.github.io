@@ -23,12 +23,10 @@
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
     color: #666;
 }
 
-h5, ul, ol {
+html, body,h5, ul, ol,p{
     padding: 0;
     margin: 0;
 }
@@ -453,11 +451,12 @@ main .item .v-item .text{
 }
 .v-mask .v-tips{
     position: absolute;
-    bottom: 0;
-    right: 1rem;
+    bottom: .5rem;
+    right: .5rem;
     font-size: .6rem;
     color: lightsteelblue;
     text-align: right;
+    line-height: 1.5;
 }
 .v-mask .v-mask-title{
     font-size: 1.8rem;

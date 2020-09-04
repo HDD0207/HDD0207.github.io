@@ -442,21 +442,12 @@ main .item .v-item .text{
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
     flex-wrap: wrap;
-}
-.v-mask .v-tips{
-    position: absolute;
-    bottom: .5rem;
-    right: .5rem;
-    font-size: .6rem;
-    color: lightsteelblue;
-    text-align: right;
-    line-height: 1.5;
 }
 .v-mask .v-mask-title{
     font-size: 1.8rem;

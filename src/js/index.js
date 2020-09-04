@@ -1,22 +1,9 @@
 $(() => {
-    if (window.addEventListener) {
-        window.addEventListener("load", function () {
-            $(".v-mask").fadeOut(500);
-            $("html,body").css({ overflowY: "auto" });
-        }, false);
-    } else if (window.attachEvent) {
-        window.attachEvent("onload", function () {
-            $(".v-mask").fadeOut(500);
-            $("html,body").css({ overflowY: "auto" });
-        });
-    } else if (window.onload) {
-        window.onload = function () {
-            $(".v-mask").fadeOut(500);
-            $("html,body").css({ overflowY: "auto" });
-        };
-    }
-    let goTop = $(".goTop")
-    goTop.hide(500);
+    $(".v-mask").fadeOut(3500,()=>{
+        $("html,body").css({ overflowY: "auto" });
+    })
+    let goTop = $(".goTop");
+    goTop.hide();
     $(document).scroll(function () {
         let scrollTop = $(document).scrollTop();
         if (scrollTop > 200) {

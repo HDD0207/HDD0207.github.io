@@ -147,19 +147,17 @@ nav .title .v-title-item li {
     padding: 0 .2rem;
     opacity: 0;
     transform: translateX(10rem);
-    transition: transform .5s ease-out, opacity .3s ease-out;
+    transition: background-color .5s ease-out, color .5s ease-out;
 }
 
 nav .title .v-title-item li:hover {
     background-color: #eee;
     color: steelblue;
-    transition: background-color .5s ease-out, color .5s ease-out;
 }
 
 nav .title:hover .v-title-item li {
     transform: none;
     opacity: 1;
-    transition: transform .5s ease-out, opacity .3s ease-out;
 }
 
 nav .title:hover .v-title-item li:nth-child(1) {
@@ -188,6 +186,7 @@ nav .title:hover .v-title-item li:nth-child(6) {
 
 nav .title .v-title-item li {
     line-height: 1.5;
+    transition: transform .5s ease-out, opacity .3s ease-out;
 }
 
 nav .list-nav .list-item {
@@ -200,12 +199,12 @@ nav .list-nav .list-item {
 
 .list-nav .list-item {
     color: lightsteelblue;
+    transition: transform .3s ease-out;
 }
 
 .list-nav .list-item:hover {
     color: steelblue;
     transform: scale(1.1);
-    transition: transform .3s ease-out;
 }
 
 /* 导航end */
@@ -276,12 +275,12 @@ main .item .v-item .text{
 #item1 .v-item .img-box img {
     width: 15rem;
     height: 15rem;
+    transition: box-shadow .3s ease-in-out,transform .3s ease-in-out;
 }
 
 #item1 .v-item .img-box:hover img {
     box-shadow: 1px 1px 8px 1px #ccc;
     transform: scale(1.05);
-    transition: box-shadow .3s ease-in-out,transform .3s ease-in-out;
 }
 
 #item2 {
@@ -412,7 +411,6 @@ main .item .v-item .text{
 #item4 .v-item:hover .mask .mask-img {
     display: block;
     transform: translateY(0);
-    transition: transform .5s linear;
     transition-delay: .3s;
     -moz-transition-delay: .3s;
     /* Firefox 4 */
